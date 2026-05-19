@@ -1,0 +1,41 @@
+# --- Secrets & local config ---
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.python-version
+
+# --- PDFs & uploads (keep your documents out of the repo) ---
+*.pdf
+temp_*.pdf
+uploads/
+
+# --- Persistent vector indexes ---
+data/
+
+# --- ML/embedding caches ---
+.cache/
+.cache_huggingface/
+.cache_sentence_transformers/
+models/
+
+# --- IDE / OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# --- Streamlit ---
+.streamlit/
+
+# --- Logs ---
+*.log

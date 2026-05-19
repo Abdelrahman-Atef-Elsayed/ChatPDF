@@ -110,7 +110,7 @@ ChatPDF/
 
 ```bash
 # 1. Clone
-git clone https://github.com/Abdelrahman-Atef-Elsayed/pdf-chat-dashboard.git
+git clone https://github.com/<your-username>/pdf-chat-dashboard.git
 cd pdf-chat-dashboard
 
 # 2. Create a virtual environment
