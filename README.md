@@ -111,7 +111,7 @@ ChatPDF/
 ```bash
 # 1. Clone
 git clone https://github.com/Abdelrahman-Atef-Elsayed/ChatPDF.git
-cd pdf-chat-dashboard
+cd ChatPDF
 
 # 2. Create a virtual environment
 python -m venv .venv
