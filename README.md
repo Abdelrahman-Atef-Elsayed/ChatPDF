@@ -39,37 +39,37 @@ No LangChain. No LlamaIndex. Just three Python files.
 
 ```
                        ┌──────────────────────────┐
-       PDF upload ────►│  pdfplumber              │
+       PDF upload ────►│        pdfplumber        │
                        └────────────┬─────────────┘
                                     │
                                     ▼
                        ┌──────────────────────────┐
-                       │  Word-based chunking     │
+                       │    Word-based chunking   │
                        └────────────┬─────────────┘
                                     │
                        ┌────────────┴─────────────┐
                        ▼                          ▼
               ┌──────────────────┐      ┌──────────────────┐
-              │  Embeddings      │      │  BM25 tokens     │
-              │  (MiniLM-L6-v2)  │      │  (rank-bm25)     │
+              │    Embeddings    │      │    BM25 tokens   │
+              │  (MiniLM-L6-v2)  │      │    (rank-bm25)   │
               └────────┬─────────┘      └────────┬─────────┘
                        ▼                         ▼
               ┌──────────────────┐      ┌──────────────────┐
-              │ FAISS IndexFlatIP│      │  BM25 sparse idx │
+              │ FAISS IndexFlatIP│      │ BM25 sparse idx  │
               └────────┬─────────┘      └────────┬─────────┘
-                       └───────┬─────────────────┘
-                               ▼
-                    ┌──────────────────────┐
-                    │  Hybrid score fusion │
-                    │  + doc filter        │
-                    │  + similarity floor  │
-                    └──────────┬───────────┘
-                               ▼
-                    ┌──────────────────────┐
-                    │  LLM provider        │
-                    │  (streamed)          │
-                    └──────────┬───────────┘
-                               ▼
+                       └────────────┬────────────┘
+                                    ▼
+                        ┌──────────────────────┐
+                        │  Hybrid score fusion │
+                        │  + doc filter        │
+                        │  + similarity floor  │
+                        └──────────┬───────────┘
+                                   ▼
+                       ┌──────────────────────┐
+                       │     LLM provider     │
+                       │      (streamed)      │
+                       └──────────┬───────────┘
+                                  ▼
                           Grounded answer
                           + cited sources
 ```
@@ -92,15 +92,15 @@ ChatPDF/
 
 ## Tech Stack
 
-| Layer | Technology |
-|---|---|
-| UI | Streamlit (with `st.write_stream`) |
-| PDF parsing | pdfplumber |
-| Embeddings | sentence-transformers (`all-MiniLM-L6-v2`) |
-| Dense index | FAISS (CPU, inner-product) |
-| Sparse index | rank-bm25 |
-| LLMs | Ollama · Groq · HuggingFace · Together AI · local extractive |
-| PDF export | fpdf2 |
+| Layer        | Technology                                                   |
+|--------------|--------------------------------------------------------------|
+| UI           | Streamlit (with `st.write_stream`)                           |
+| PDF parsing  | pdfplumber                                                   |
+| Embeddings   | sentence-transformers (`all-MiniLM-L6-v2`)                   |
+| Dense index  | FAISS (CPU, inner-product)                                   |
+| Sparse index | rank-bm25                                                    |
+| LLMs         | Ollama · Groq · HuggingFace · Together AI · local extractive |
+| PDF export   | fpdf2                                                        |
 
 ---
 
@@ -166,18 +166,18 @@ Open the URL Streamlit prints (typically `http://localhost:8501`).
 
 All settings are optional. Sidebar input wins; environment variable is the fallback.
 
-| Env var | Purpose | Default |
-|---|---|---|
-| `GROQ_API_KEY` | Groq provider key | — |
-| `HUGGINGFACE_API_KEY` | HuggingFace provider key | — |
-| `TOGETHER_API_KEY` | Together AI provider key | — |
-| `OLLAMA_BASE_URL` | Ollama server URL | `http://localhost:11434` |
-| `OLLAMA_MODEL` | Ollama model tag | `llama3.2` |
-| `EMBEDDING_MODEL` | sentence-transformers model name | `all-MiniLM-L6-v2` |
-| `CHUNK_SIZE` | Words per chunk | `500` |
-| `CHUNK_OVERLAP` | Words shared between adjacent chunks | `50` |
-| `REQUEST_TIMEOUT` | LLM HTTP timeout (seconds) | `60` |
-| `DATA_DIR` | Where saved indexes live | `data` |
+| Env var               | Purpose                              | Default                  |
+|-----------------------|--------------------------------------|--------------------------|
+| `GROQ_API_KEY`        | Groq provider key                    | ———————————————————————— |
+| `HUGGINGFACE_API_KEY` | HuggingFace provider key             | ———————————————————————— |
+| `TOGETHER_API_KEY`    | Together AI provider key             | ———————————————————————— |
+| `OLLAMA_BASE_URL`     | Ollama server URL                    | `http://localhost:11434` |
+| `OLLAMA_MODEL`        | Ollama model tag                     | `llama3.2`               |
+| `EMBEDDING_MODEL`     | sentence-transformers model name     | `all-MiniLM-L6-v2`       |
+| `CHUNK_SIZE`          | Words per chunk                      | `500`                    |
+| `CHUNK_OVERLAP`       | Words shared between adjacent chunks | `50`                     |
+| `REQUEST_TIMEOUT`     | LLM HTTP timeout (seconds)           | `60`                     |
+| `DATA_DIR`            | Where saved indexes live             | `data`                   |
 
 Get free API keys:
 - Groq → <https://console.groq.com>
